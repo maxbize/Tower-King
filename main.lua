@@ -2,6 +2,8 @@ require 'philtre.init'  -- Load all engine components into global variables.
 
 function love.load()
   scene = SceneTree()
+  txt = Text("Hello world", love.graphics.newFont(20))
+  scene:add(txt)
 end
 
 function love.update(dt)
