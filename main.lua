@@ -1,9 +1,14 @@
-require 'philtre.init'  -- Load all engine components into global variables.
+-- Global vars
+scriptsDir = 'Assets/Scripts/'
+
+require('philtre.init')  -- Load all engine components into global variables.
+require(scriptsDir .. 'map')
 
 function love.load()
+  love.graphics.setDefaultFilter("nearest", "nearest") -- pixel art
+  love.graphics.setBackgroundColor(20/255, 11/255, 40/255)
   scene = SceneTree()
-  txt = Text("Hello world", love.graphics.newFont(20))
-  scene:add(txt)
+  createMap(8, 8)
 end
 
 function love.update(dt)
@@ -16,5 +21,6 @@ function love.update(dt)
 end
 
 function love.draw()
+  love.graphics.scale(4) -- pixel art
   scene:draw()
 end
