@@ -2,7 +2,7 @@
 -- Create an n by m ground
 -- Not very well optomized since every tile is an independent object. Maybe Philtre could integrated Simple Tiled Implementation?
 function createMap(width, height)
-  local img = love.graphics.newImage('Assets/Sprites/rpg-dungeon-pack v1.1/tiles_dungeon_v1.1.png')
+  local img = new.image('Assets/Sprites/rpg-dungeon-pack v1.1/tiles_dungeon_v1.1.png')
 
   -- Draw the ground
   for x = 1, width do
@@ -27,6 +27,10 @@ function createMap(width, height)
     end
   end
 
-  -- TODO: Draw the exterior edges
+  -- TODO: Draw the other exterior edges
+  for i = 1, width do
+    local tile = Quad(img, {15 * 16, 0 * 16, 16, 16}, (i-1) * 16 + 8, height * 16 + 8)
+    scene:add(tile)
+  end
 
 end
